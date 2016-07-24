@@ -11,20 +11,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    
+
     <script src="scripts/app.js"></script>
 </head>
 
-<body ng-app="bikeStore">
+<body ng-app="bikeStore" class="container-fluid">
 
-    Bike Store.. Coming Soon...
-    <br/>
-    <br/>
-    
     <div ng-controller="prodList">
-        {{products}}
-    </div>
 
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>Bike Store</h1>
+                <p>Bikes, Bikes & More Bikes!</p>
+            </div>
+        </div>
+
+        <div ng-repeat="p in products" class="col-sm-4">
+            <div class="panel panel-primary prod">
+
+                <div class="panel-heading">{{p.name}}</div>
+                <div class="panel-body">
+                    <img ng-src="{{p.image.thumb}}" class="img-responsive" style="width:100%">
+                </div>
+                <div class="panel-body desc">
+                    {{p.description}}
+                </div>
+                <div class="panel-footer">
+                    <span ng-repeat="c in p.class">
+                        {{c}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        
 </body>
 
 </html>
