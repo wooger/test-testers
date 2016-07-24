@@ -1,8 +1,9 @@
 (function () {
 
     var app = angular.module('bikeStore', []);
-
+    
     var datasource = 'https://raw.githubusercontent.com/jujhars13/jujhars13/master/bikes.json'; // external JSON datasource 
+    var keyPrefixForStorage = "pl.fi."; // prefixed to all filter keys we store in session storage
 
     app.controller('prodList', ['$scope', '$http', function ($scope, $http) {
 
@@ -16,6 +17,9 @@
 
             // initialise the datafilters
             $scope.dataFilters = $scope.getDataFilters($scope.products, $scope.attributesToFilter);
+
+            // read set filters from session storage to keep filters on page refresh
+            $scope.setFilterStates($scope.dataFilters);
 
             // filter the products as per the selected filters
             $scope.filteredProducts = $scope.filterProducts($scope.products, $scope.dataFilters);
@@ -84,6 +88,14 @@
 
             filterToToggle.state = !filterToToggle.state;
 
+            // store or remove the toggled filter from session storage
+            if (filterToToggle.state) {
+                sessionStorage.setItem(keyPrefixForStorage + filterToToggle.key + filterToToggle.value, 1);
+            }
+            else {
+                sessionStorage.removeItem(keyPrefixForStorage + filterToToggle.key + filterToToggle.value);
+            }
+
             // filter the products as per the selected filters
             $scope.filteredProducts = $scope.filterProducts($scope.products, $scope.dataFilters);
         }
@@ -142,6 +154,21 @@
                 // no filters to filter by so just return list of all products unfiltered
                 return products;
             }
+        }
+
+
+        /**
+         * Gets the values of any applied filters from session storage 
+         * Can be used to reload filters on page refresh
+         * 
+         * @param {any} filterOptions
+         */
+        $scope.setFilterStates = function (filterOptions) {
+            angular.forEach(filterOptions, function (filterOption) {
+                if (sessionStorage.getItem(keyPrefixForStorage + filterOption.key + filterOption.value) == '1') {
+                    filterOption.state = true;
+                }
+            }, true);
         }
 
     }]);
