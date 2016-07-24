@@ -17,6 +17,9 @@
             // initialise the datafilters
             $scope.dataFilters = $scope.getDataFilters($scope.products, $scope.attributesToFilter);
 
+            // filter the products as per the selected filters
+            $scope.filteredProducts = $scope.filterProducts($scope.products, $scope.dataFilters);
+
         });
 
         /**
@@ -74,14 +77,72 @@
 
             // work out what the state should be
             var filterToToggle = $scope.dataFilters.filter(
-                filterOption => 
-                filterOption.key == key 
-                && filterOption.value == value
+                filterOption =>
+                    filterOption.key == key
+                    && filterOption.value == value
             )[0];
 
             filterToToggle.state = !filterToToggle.state;
 
-        };
+            // filter the products as per the selected filters
+            $scope.filteredProducts = $scope.filterProducts($scope.products, $scope.dataFilters);
+        }
+
+        /**
+         * Filters a list of products in accordance to the supplied filters
+         * 
+         * @param {any} products
+         * @param {any} dataFilters
+         * @returns filtered products
+         */
+        $scope.filterProducts = function (products, dataFilters) {
+
+            var filtersSelected = dataFilters.filter(
+                filterOption =>
+                    filterOption.state == true
+            );
+
+            // do we have any filters to fitler by?
+            if (filtersSelected.length > 0) {
+
+                var filteredProducts = [];
+
+                // loop through all products
+                angular.forEach(products, function (product) {
+
+                    var productMissingAttribute = false;
+
+                    // loop through all selected filters
+                    angular.forEach(filtersSelected, function (filterOption) {
+
+                        // can we find a matching value for this attribute?
+                        var valueFound = product[filterOption.key].filter(
+                            value =>
+                                value == filterOption.value
+                        ).length > 0;
+
+                        // if no matching value is found then set the flag to make sure we don't add this to the filtered products
+                        if (!valueFound) {
+                            productMissingAttribute = true;
+                        }
+
+                    }, this);
+
+                    // add to the list of filtered products
+                    if (!productMissingAttribute) {
+                        filteredProducts.push(product);
+                    }
+
+                }, true);
+
+                // return filtered products
+                return filteredProducts;
+            }
+            else {
+                // no filters to filter by so just return list of all products unfiltered
+                return products;
+            }
+        }
 
     }]);
 
