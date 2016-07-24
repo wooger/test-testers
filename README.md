@@ -4,6 +4,8 @@
 
 Please open the Site/index.html file in the latest version of Chrome - Enjoy :)
 
+Tests can be run by opening the Tests/RunTests.html file in the latest version of Chrome.
+
 **NOTES**
 
 
