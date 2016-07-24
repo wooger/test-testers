@@ -23,6 +23,10 @@ describe('prodList Controller', function () {
         ]
     };
 
+    var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true}];
+    var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
+    var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
+
     beforeEach(module('bikeStore'));
 
     beforeEach(inject(function ($injector) {
@@ -68,17 +72,17 @@ describe('prodList Controller', function () {
     // basic test that get data filters returns filters
     it('when we get data filters we get some data filters', function () {
         
-        var dataFilters = $rootScope.getDataFilters($rootScope.products, ["class"]);
+        var dataFilters = $rootScope.getDataFilters(mockBikeJSON.items, ["class"]);
 
-        expect($rootScope.products).not.toBeUndefined();
-        expect($rootScope.products.length).toBeGreaterThan(0);
+        expect(dataFilters).not.toBeUndefined();
+        expect(dataFilters.length).toBeGreaterThan(0);
 
     });
 
     // basic test that get data filters expected number of filters
     it('when we get data filters we get the expected number of data filters', function () {
         
-        var dataFilters = $rootScope.getDataFilters($rootScope.products, ["class", "gears"]);
+        var dataFilters = $rootScope.getDataFilters(mockBikeJSON.items, ["class", "gears"]);
 
         expect(dataFilters).not.toBeUndefined();
         expect(dataFilters.length).toEqual(5);
@@ -88,7 +92,7 @@ describe('prodList Controller', function () {
     it('when we get data filters we get only unique data filters', function () {
 
         // inject our own parametes to getDataFilters
-        var dataFilters = $rootScope.getDataFilters($rootScope.products, ["class", "gears"]);
+        var dataFilters = $rootScope.getDataFilters(mockBikeJSON.items, ["class", "gears"]);
 
         // get a unique list
         var values = dataFilters.map(filter => filter.value);
@@ -125,5 +129,44 @@ describe('prodList Controller', function () {
             expect(filterToToggle.state).toBeFalsy();
         }
     });
+
+    it('when we filter by "class: comfort" we get 1 result', function () {
+
+		var controller = createController();
+		$httpBackend.flush();
+
+        // call filtered products with mock data
+        var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassComfort)
+
+        // we are execting no results
+        expect(filteredProducts.length).toEqual(1);
+		
+	});
+
+    it('when we filter by "class: comfort" and "gears: 21" we get no results', function () {
+
+		var controller = createController();
+		$httpBackend.flush();
+
+        // call filtered products with mock data
+        var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassComfort21GearsTrue)
+
+        // we are execting no results
+        expect(filteredProducts.length).toEqual(0);
+		
+	});
+
+    it('when we filter by "class: comfort" and "gears: 18" we get one result', function () {
+
+		var controller = createController();
+		$httpBackend.flush();
+
+        // call filtered products with mock data
+        var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassComfort18GearsTrue)
+
+        // we are execting no results
+        expect(filteredProducts.length).toEqual(1);
+		
+	});
 
 });
