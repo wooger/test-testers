@@ -19,6 +19,13 @@
 
         });
 
+        /**
+         * Gets the list of dataFilters from the products 
+         * 
+         * @param {any} products
+         * @param {any} attributesToFilter
+         * @returns dataFilters
+         */
         $scope.getDataFilters = function (products, attributesToFilter) {
 
             // list of data filters to return
@@ -56,6 +63,26 @@
 
             return dataFilters;
         }
+
+        /**
+         * Toogles the state of a datafilter 
+         * 
+         * @param {any} key of datafilter to toggle
+         * @param {any} value of datafilter to toggle
+         */
+        $scope.toggleFilter = function (key, value) {
+
+            // work out what the state should be
+            var filterToToggle = $scope.dataFilters.filter(
+                filterOption => 
+                filterOption.key == key 
+                && filterOption.value == value
+            )[0];
+
+            filterToToggle.state = !filterToToggle.state;
+
+        };
+
     }]);
 
 })();
