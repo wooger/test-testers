@@ -99,4 +99,31 @@ describe('prodList Controller', function () {
 
     });
 
+    // test toggle filer
+    it('when we toggle a dataFilter the state changes', function () {
+        var keyToToggle = "class";
+        var valueToToggle = "race"
+
+        var filterToToggle = $rootScope.dataFilters.filter(
+            filterOption => 
+            filterOption.key == keyToToggle 
+            && filterOption.value == valueToToggle
+        )[0];
+
+        if (filterToToggle.state)
+        {
+            $rootScope.toggleFilter(keyToToggle, valueToToggle);
+            expect(filterToToggle.state).toBeFalsy();
+            $rootScope.toggleFilter(keyToToggle, valueToToggle);
+            expect(filterToToggle.state).toBeTruthy();
+        }
+        else
+        {
+            $rootScope.toggleFilter(keyToToggle, valueToToggle);
+            expect(filterToToggle.state).toBeTruthy();
+            $rootScope.toggleFilter(keyToToggle, valueToToggle);
+            expect(filterToToggle.state).toBeFalsy();
+        }
+    });
+
 });
