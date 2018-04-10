@@ -5,11 +5,12 @@
 We need you to create an integration test suite to test that the application herein below functions correctly and renders according to the user stories.
 
 1. Fork this project
-2. Write your integration test suite
-3. Document profusely
-4. *OPTIONAL* If you have time, attempt to get some bonus points (see below for assessment criteria)
+2. Make some reasonable assumptions (and document)
+3. Write your integration test suite (as much as you see fit)
+4. Document profusely
+5. *OPTIONAL* If you have time, attempt to get some bonus points (see below for assessment criteria)
 
-To submit your assessment please send us your GitHub repository URL. Feel free to send it to us before you've actually finished and refine on the fly (like real life), your thought processes are of equal interest to us.
+To submit your assessment please send us your GitHub repository URL. You will get bonus points if you send it to us before you've actually finished and work on it iteratively (like real life), your thought processes are of greater interest to us.
 
 **Good Luck!**
 
@@ -45,9 +46,10 @@ Your test suite will be assessed on the following criteria (with scoring in orde
 
 To qualify for extra bonus points please also attempt the following if you have time:
 
-1. modify the existing unit test suite + mock data to satisfy the following BDD criteria:
+1. Sharing your GitHub repo with us early and working on this task iteratively
+2. modify the existing unit test suite + mock data to satisfy the following BDD criteria:
     - `when we filter by "class: gravel" and "gears: 21" we get one result`
-2. get your integration test suite working in Docker so it can run on any machine
+3. get your integration test suite working in Docker so it can run on any machine
 
 ## Assumptions
 
