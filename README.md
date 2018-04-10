@@ -31,23 +31,23 @@ See [Getting the application Running] to see how to run the application.
 ## Assessment Criteria
 Your test suite will be assessed on the following criteria (with scoring in order of importance):
 
-- Approach
-- Code organisation, commenting, documentation
-- If test suite can be easily reproduced and ran on any machine
-- Flair
+- approach
+- code organisation, commenting, documentation
+- if test suite can be easily reproduced and ran on any machine
+- flair
 - use of git
 - use of docker
 
 ### Bonus Points
 - Modify the existing unit test suite + mock data to satisfy the following BDD criteria:
     - `when we filter by "class: gravel" and "gears: 21" we get one result`
-- get your integration test suite working in Docker so it can be ran on any machine
+- get your integration test suite working in Docker so it can run on any machine
 
 ## Assumptions:
 - Please list any assumptions or scope limitations that you may make
 - Feel free to use any languages and libraries/frameworks
 
-## Getting the application Running
+## Getting the Application Running locally
 
 This application can be run simply using [Docker](https://www.docker.com/).  You will be using Docker a lot here so learn that stuff:
 
