@@ -29,7 +29,7 @@ As a user, assuming I have access to a modern web browser (Chrome) with an inter
 - I would like my custom order to be saved and not change when I refresh the page
 - A JSON object with all the relevant bike data is available at, feel free to call that URL directly from your page or host it on your server if you're using one: https://jujhar.com/bikes.json
 
-In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `/app/test`
+In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `app/test`
 See [getting-the-application-running](https://github.com/jujhars13/test-testers#getting-the-application-running-locally) section to see how to run the test suite.
 
 ## Assessment Criteria
@@ -47,7 +47,7 @@ Your test suite will be assessed on the following criteria (with scoring in orde
 To qualify for extra bonus points please also attempt the following if you have time:
 
 1. Sharing your GitHub repo with us early and working on this task iteratively
-2. modify the existing unit test suite + mock data to satisfy the following BDD criteria:
+2. modify the existing unit test suite + mock data in `app/test/` to satisfy the following BDD criteria:
     - `when we filter by "class: gravel" and "gears: 21" we get one result`
 3. get your integration test suite working in Docker so it can run on any machine
 
@@ -68,8 +68,8 @@ This application can be run simply using [Docker](https://www.docker.com/).
 docker run -it -v ${PWD}/app:/usr/share/nginx/html:ro -p 80:80 nginx:1.13
 ```
 
-Then browse to [http://localhost]() to see the application:
-You can also run the Jasmine based unit test suite by browsing [http://localhost/test]() 
+Then browse to [http://localhost]() to see the application running.
+You can also run the [Jasmine](https://jasmine.github.io/) based unit test suite by browsing to [http://localhost/test]() 
 
 ### Python
 
