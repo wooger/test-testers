@@ -1,8 +1,8 @@
 (function () {
 
     var app = angular.module('bikeStore', []);
-    
-    var datasource = 'https://raw.githubusercontent.com/jujhars13/jujhars13/master/bikes.json'; // external JSON datasource 
+
+    var datasource = '//raw.githubusercontent.com/jujhars13/jujhars13/master/bikes.json'; // external JSON datasource 
     var keyPrefixForStorage = "pl.fi."; // prefixed to all filter keys we store in session storage
 
     app.controller('prodList', ['$scope', '$http', function ($scope, $http) {
@@ -27,8 +27,8 @@
         });
 
         /**
-         * Gets the list of dataFilters from the products 
-         * 
+         * Gets the list of dataFilters from the products
+         *
          * @param {any} products
          * @param {any} attributesToFilter
          * @returns dataFilters
@@ -38,7 +38,7 @@
             // list of data filters to return
             var dataFilters = [];
 
-            // loop through each attribute we want to add to the filtering e.g. "class" etc 
+            // loop through each attribute we want to add to the filtering e.g. "class" etc
             angular.forEach(attributesToFilter, function (key) {
 
                 // find if any products have any values for this attibute e.g. "race", "endurance" etc
@@ -72,8 +72,8 @@
         }
 
         /**
-         * Toogles the state of a datafilter 
-         * 
+         * Toogles the state of a datafilter
+         *
          * @param {any} key of datafilter to toggle
          * @param {any} value of datafilter to toggle
          */
@@ -102,7 +102,7 @@
 
         /**
          * Filters a list of products in accordance to the supplied filters
-         * 
+         *
          * @param {any} products
          * @param {any} dataFilters
          * @returns filtered products
@@ -158,9 +158,9 @@
 
 
         /**
-         * Gets the values of any applied filters from session storage 
+         * Gets the values of any applied filters from session storage
          * Can be used to reload filters on page refresh
-         * 
+         *
          * @param {any} filterOptions
          */
         $scope.setFilterStates = function (filterOptions) {
@@ -174,5 +174,3 @@
     }]);
 
 })();
-
-

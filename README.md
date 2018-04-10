@@ -1,4 +1,4 @@
-# Bikes Exercise
+# Bikes Tester Exercise
 
 ## Usage
 
@@ -6,18 +6,26 @@ Please open the Site/index.html file in the latest version of Chrome - Enjoy :)
 
 Tests can be run by opening the Tests/RunTests.html file in the latest version of Chrome.
 
-## Assumptions
+## Running
 
-I felt the following item, in the user story, was not a very useful feature.
+This application can be run simply using [Docker](https://www.docker.com/).  You will be using Docker a lot here so learn that stuff:
 
-- we would like to be able to sort the bikes into a custom order based on class
+```bash
+docker run -it -v ${PWD}/app:/usr/share/nginx/html:ro -p 80:80 nginx:1.13
+````
+Then browse to http://localhost to see the application:
+You can also run the Jasmine based unit test suite by browsing http://localhost
 
-Normally I would raise my concerns with the product owner. As this was not possible I decided to go ahead and implement a product filtering system instead. It is expandable to use any other attribute that may be added to the JSON data. I have tested it for filtering across multiple attributes in the unit tests.
+It can also be run by simply serving the `app/` directory from any web server on your machine.  
+
+
+## Tasks
+
+### Bonus points
+-
+
+
 
 ## To do
 
 1. Unit tests for session storage of filtered options
-
-
-
-
