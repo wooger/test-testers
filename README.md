@@ -1,5 +1,7 @@
 # Bikes Tester Exercise
 
+![on my mf bike](app/favicon.png)
+
 ## Your Challenge
 
 We need you to create an integration test suite to test that the application herein below functions correctly and renders according to the user stories.
