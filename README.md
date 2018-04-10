@@ -27,8 +27,6 @@ As a user, assuming I have access to a modern web browser (Chrome) with an inter
 In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `/app/test`
 See [Getting the application Running] section to see how to run the test suite.
 
-![bikes application screenshot](https://raw.githubusercontent.com/jujhars13/test-testers/master/screenshot.png)
-
 ## Assessment Criteria
 Your test suite will be assessed on the following criteria (with scoring in order of importance):
 
@@ -62,3 +60,7 @@ Then browse to [http://localhost]() to see the application:
 You can also run the Jasmine based unit test suite by browsing [http://localhost/test]() 
 
 It can also be run by simply serving the `app/` directory from any web server on your machine if you're less au-fait containers.
+
+## Screenshot
+
+![bikes application screenshot](https://raw.githubusercontent.com/jujhars13/test-testers/master/screenshot.png)
