@@ -1,8 +1,14 @@
 # Bikes Tester Exercise
 
-
 ## Your Challenge
-We need you to create an integration test suite to test that the application described below functions correctly and renders according to the user stories.
+We need you to create an integration test suite to test that the application described below functions correctly and renders according to the user stories.  
+- Fork this project
+- write your integration test suite
+- document profusely
+- if you have time attempt to get some bonus points (see below for assesment criteria)
+
+You have a week to get this done in.
+**Good Luck!**
 
 ## The Scenario
 One of our dev team has developed this wonderful Bikes application in [Angular.js](https://angularjs.org/) to meet our customer's requirements.
@@ -33,7 +39,8 @@ Your test suite will be assessed on the following criteria (with scoring in orde
 - use of docker
 
 ### Bonus Points
-- Modify the existing unit test suite + mock data to satisfy the following BDD criteria `when we filter by "class: gravel" and "gears: 21" we get one result`
+- Modify the existing unit test suite + mock data to satisfy the following BDD criteria:
+    - `when we filter by "class: gravel" and "gears: 21" we get one result`
 - get your integration test suite working in Docker so it can be ran on any machine
 
 ## Assumptions:
@@ -42,12 +49,12 @@ Your test suite will be assessed on the following criteria (with scoring in orde
 
 ## Getting the application Running
 
-This application can be run simply using [Docker](https://www.docker.com/).  You will be using Docker a lot here, so learn that stuff:
+This application can be run simply using [Docker](https://www.docker.com/).  You will be using Docker a lot here so learn that stuff:
 
 ```bash
 docker run -it -v ${PWD}/app:/usr/share/nginx/html:ro -p 80:80 nginx:1.13
 ````
-Then browse to [http://localhost] to see the application:
-You can also run the Jasmine based unit test suite by browsing [http://localhost/test]  
+Then browse to [http://localhost]() to see the application:
+You can also run the Jasmine based unit test suite by browsing [http://localhost/test]() 
 
 It can also be run by simply serving the `app/` directory from any web server on your machine if you're so inclined.
