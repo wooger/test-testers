@@ -13,7 +13,7 @@ To submit your assessment please send us your GitHub repository URL. Feel free t
 
 ## The Scenario
 One of our dev team has developed this wonderful Bikes application in [Angular.js](https://angularjs.org/) to meet our customer's requirements.
-It reads a blob of [json data](https://raw.githubusercontent.com/jujhars13/test-testers/master/app/bikes.json) and renders a listing of all the bikes according to the following user story:
+It reads a blob of [json data](app/bikes.json) and renders a listing of all the bikes according to the following user story:
 
 ### The User story
 As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
@@ -25,7 +25,7 @@ As a user, assuming I have access to a modern web browser (Chrome) with an inter
 - A JSON object with all the relevant bike data is available at, feel free to call that URL directly from your page or host it on your server if you're using one: https://jujhar.com/bikes.json
 
 In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `/app/test`
-See [#getting-the-application-running-locally]() section to see how to run the test suite.
+See ![](#getting-the-application-running-locally) section to see how to run the test suite.
 
 ## Assessment Criteria
 Your test suite will be assessed on the following criteria (with scoring in order of importance):
