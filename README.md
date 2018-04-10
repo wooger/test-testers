@@ -4,10 +4,10 @@
 
 We need you to create an integration test suite to test that the application herein below functions correctly and renders according to the user stories.
 
-- fork this project
-- write your integration test suite
-- document profusely
-- if you have time, attempt to get some bonus points (see below for assessment criteria)
+1. Fork this project
+2. Write your integration test suite
+3. Document profusely
+4. *OPTIONAL* If you have time, attempt to get some bonus points (see below for assessment criteria)
 
 To submit your assessment please send us your GitHub repository URL. Feel free to send it to us before you've actually finished and refine on the fly (like real life), your thought processes are of equal interest to us.
 
