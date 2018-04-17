@@ -36,22 +36,22 @@ See [getting-the-application-running](https://github.com/jujhars13/test-testers#
 
 ## Assessment Criteria
 
-Your test suite will be assessed on the following criteria (with scoring in order of importance):
+Your test suite will be assessed on the following criteria with scoring in order of importance:
 
-- approach and style
-- code organisation, commenting and documentation
-- use of git
-- if test suite can be easily reproduced and ran on any machine
-- use of docker
+1. approach and style
+2. code organisation, commenting and documentation
+3. use of git
+4. how easily the test suite can be easily reproduced and ran on any machine
+
+Again, we care more about criteria 1 and 2 as opposed to 3 and 4, so make sure you devote your time accordingly.
 
 ### Bonus Points
 
 To qualify for extra bonus points please also attempt the following if you have time:
 
 1. Sharing your GitHub repo with us early and working on this task iteratively
-2. modify the existing unit test suite + mock data in `app/test/` to satisfy the following BDD criteria:
+2. Modify the existing unit test suite + mock data in `app/test/` to satisfy the following BDD criteria:
     - `when we filter by "class: gravel" and "gears: 21" we get one result`
-3. get your integration test suite working in Docker so it can run on any machine
 
 ## Assumptions
 
