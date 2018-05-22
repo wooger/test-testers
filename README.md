@@ -4,7 +4,7 @@
 
 ## Your Challenge
 
-We need you to create an integration test suite to test that the application herein below functions correctly and renders according to the user stories.
+We need you to create an integration test suite to test that the application herein functions correctly and renders according to the user stories.
 
 ### Steps
 
@@ -12,7 +12,7 @@ We need you to create an integration test suite to test that the application her
 2. Make some reasonable assumptions and document
 3. Write your integration test suite (as much as you see fit)
 4. Document profusely
-5. *OPTIONAL* If you have time, attempt to get some bonus points (see below for assessment criteria)
+5. *OPTIONAL Bonus Points* If you have time, attempt to get some bonus points (see below for bonus assessment criteria)
 
 To submit your assessment please send us your GitHub repository URL. You will get bonus points if you send it to us before you've actually finished and work on it iteratively (like real life), your thought processes are of greater interest to us.
 
@@ -62,7 +62,8 @@ To qualify for extra bonus points please also attempt the following if you have 
 - Feel free to use any languages and libraries/frameworks
 
 ## Getting the Application Running locally
-This is a static web application and can be ran in a myriad of ways.
+This is a single page static web application and can be ran in a myriad of ways:
+
 ### Docker
 
 This application can be run simply using [Docker](https://www.docker.com/).
