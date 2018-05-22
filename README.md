@@ -6,10 +6,12 @@
 
 We need you to create an integration test suite to test that the application herein below functions correctly and renders according to the user stories.
 
+### Steps
+
 1. Fork this project
 2. Make some reasonable assumptions and document
 3. Write your integration test suite (as much as you see fit)
-4. Document profusely./
+4. Document profusely
 5. *OPTIONAL* If you have time, attempt to get some bonus points (see below for assessment criteria)
 
 To submit your assessment please send us your GitHub repository URL. You will get bonus points if you send it to us before you've actually finished and work on it iteratively (like real life), your thought processes are of greater interest to us.
