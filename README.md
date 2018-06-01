@@ -31,7 +31,7 @@ As a user, assuming I have access to a modern web browser (Chrome) with an inter
 - I would like to see a the name, an image, a description and the class for each bike
 - I would like to be able to sort the bikes into a custom order based on class
 - I would like my custom order to be saved and not change when I refresh the page
-- A JSON object with all the relevant bike data is available at, feel free to call that URL directly from your page or host it on your server if you're using one: https://jujhar.com/bikes.json
+- A JSON object with all the relevant bike data is available at https://jujhar.com/bikes.json; feel free to call that URL directly from your page or host it on your server if you're using one.
 
 In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `app/test`
 See [getting-the-application-running](https://github.com/jujhars13/test-testers#getting-the-application-running-locally) section to see how to run the test suite.
