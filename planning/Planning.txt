@@ -2,10 +2,18 @@ User Story:
 
 As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
     I would like to see a list/grid of bikes based on /app/bikes.json
+To test this: 
+Part A - is a grid/list shown? Check layout of productlist
+Part B - is it based on bikes.json?
+Hard to confirm without parsing JSON & making comparison.
+Could be as simple as comparison of number of displayed bikes vs number of elements in JSON array.
+OR Parse JSON directly, validate it & compare to displayed bikes in grid, confirming each named bike is present & alongside appropriate image, class, description etc.
     I would like to see a the name, an image, a description and the class for each bike
+To test this: Locate elements locators for each requirement, cycle through the repeating classes to confirm for each bike displayed.
     I would like to be able to sort the bikes into a custom order based on class
+To test this: Confirm that each filter checkbox works - i.e. that all bikes displayed have classes containing the selected filter. Use class element locator found in above test.
     I would like my custom order to be saved and not change when I refresh the page
-    
+To test this:     
 
 Initial Thoughts:
 #1
