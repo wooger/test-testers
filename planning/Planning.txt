@@ -13,7 +13,7 @@ To test this: Locate elements locators for each requirement, cycle through the r
     I would like to be able to sort the bikes into a custom order based on class
 To test this: Confirm that each filter checkbox works - i.e. that all bikes displayed have classes containing the selected filter. Use class element locator found in above test.
     I would like my custom order to be saved and not change when I refresh the page
-To test this:     
+To test this: Load the page, check a filter box, refresh the page, and confirm the checkbox is still checked. Repeat for all other filters.    
 
 Initial Thoughts:
 #1
