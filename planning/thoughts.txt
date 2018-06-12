@@ -1,0 +1,37 @@
+User Story:
+
+As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
+    I would like to see a list/grid of bikes based on /app/bikes.json
+    I would like to see a the name, an image, a description and the class for each bike
+    I would like to be able to sort the bikes into a custom order based on class
+    I would like my custom order to be saved and not change when I refresh the page
+    
+
+Initial Thoughts:
+#1
+If treated as a whitebox test, I could pull in the whole JSON data object &  compare to page for accuracy - i.e. every bike has the correct images & data shown against it.
+
+I don't think this is what we're after, a blackbox test is more appropriate.
+
+Decision: Other than examining the JSON manually, I'll treat this exercise as a blackbox test, and run tests only on the app page itself.
+
+#2
+Use Ruby, Rspec & Selenium WebDriver to accomplish the task.
+
+Assumptions:
+Assume the JSON is valididated already when generated, so don't directly parse the json file.
+Assume that grid & list behave substantially the same, so no need to test both.
+Only test on Chrome on Desktop rather than mobile.
+Assume a reasonable screen size such that the desktop 3xN grid is shown. 
+Assume that the specific image & description shown for each bike matters - rather than just *an* image being shown etc.
+
+Re user story:
+The page obviously doesn't *sort* bikes based on the class checkboxes, but rather filters based on them. I'm going to assume that the wording of the user story here is an oversight, and you don't want me to re-write the app / make a test for something that isn't included.
+
+I will write my testing assuming the story should instead read:
+- I would like to be able to FILTER the bikes shown based on class.
+- I would like my FILTER to be saved and not change when I refresh the page.
+
+Scope:
+Chrome Desktop Browser only to be tested.
+Average Screensize.
