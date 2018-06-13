@@ -1,0 +1,9 @@
+Locators for exercise:
+
+Product List: class: 'prodList'
+
+Bike names: class: 'panel-heading'
+
+Bike class: class: panel-footer -> class: 'capitalise' - repeated...
+Bike description: class: 'desc'
+Bike image: class: 'img-responsive'
