@@ -3,7 +3,7 @@ User Story Analysis:
 As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
     I would like to see a list/grid of bikes based on /app/bikes.json
 To test this: 
-Part A - is a grid/list shown? Check  ng-controller = prodList is present in relevant div.
+Part A - is a grid/list shown? Check  class = prodList is present in relevant div.
 Part B - is it based on bikes.json?
 Hard to confirm without parsing JSON & making comparison.
 Could be as simple as comparison of number of displayed bikes vs number of elements in JSON array.
@@ -22,6 +22,8 @@ If treated as a whitebox test, I could pull in the whole JSON data object &  com
 I don't think this is what we're after, a blackbox test is more appropriate.
 
 Decision: Other than examining the JSON manually, I'll treat this exercise as a blackbox test, and run tests only on the app page itself.
+Update: The open-uri gem is the best route to parse & validate the JSON.
+I've decided it is worthwhile accessing the JSON directly & comparing to the page contents.
 
 #2
 Use Ruby, Rspec & Selenium WebDriver to accomplish the task.
@@ -29,6 +31,8 @@ Use Ruby, Rspec & Selenium WebDriver to accomplish the task.
 Assumptions:
 Assume the JSON is valididated already when generated, so don't directly parse the json file.
 Assume that grid & list behave substantially the same, so no need to test both.
+Update: Assume that all filter checkboxes are unticked for a new site visitor.
+Update: Assume that the sort order of bikes on the pages matches that in the JSON. I note that the id parameters from the JSON aren't present on the page, so alpha-numeric sorting via bike name is the only other option.
 Only test on Chrome on Desktop rather than mobile.
 Assume a reasonable screen size such that the desktop 3xN grid is shown. 
 Assume that the specific image & description shown for each bike matters - rather than just *an* image being shown etc.

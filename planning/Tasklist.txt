@@ -1,11 +1,11 @@
 Todo:
 1. Run app via python - DONE
 2. Create barebones specfiles, naming tests for each part of user story.
-3. Plan how to accomplish each test in comments.
-4. Open app page in Firefox dev tools, and use element picker to examine page.
-5. Locate suitable element locators to accomplish each task
-6. Code in test details & decide on assert.
-7. Test specfiles via rspec <filename>.
+3. Plan how to accomplish each test in comments. DONE
+4. Open app page in Firefox dev tools, and use element picker to examine page. DONE
+5. Locate suitable element locators to accomplish each task DONE
+6. Code in test details & decide on assert. DOING
+7. Test specfiles via rspec <filename>. DOING
 8. Split code into spec helper, pages & specs.
 9. Convert text files into markdown.
 10. Tackle bonus task.
