@@ -1,7 +1,8 @@
-# filename: prodlist_spec.rb
+# filename: bikestore_spec.rb
 require 'selenium-webdriver'
 require 'open-uri'
 require 'json'
+
 describe 'Bikestore app' do
     before(:each) do
         # Open new browser
@@ -85,7 +86,7 @@ describe 'Bikestore app' do
         # Simple - compare number of bikes
         bikes_total = bike_names.length # Total bike elements on page
         bikes_json_total = bikes_json['items'].length # Total bike elements in JSON
-        #expect(bikes_total).to eq(bikes_json_total)
+        expect(bikes_total).to eq(bikes_json_total)
 
         # Confirm bikes from JSON are all present by comparing arrays
         expect(bike_names).to eq(names_json)
