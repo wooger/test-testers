@@ -3,7 +3,7 @@ User Story:
 As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
     I would like to see a list/grid of bikes based on /app/bikes.json
 To test this: 
-Part A - is a grid/list shown? Check layout of productlist
+Part A - is a grid/list shown? Check  ng-controller = prodList is present in relevant div.
 Part B - is it based on bikes.json?
 Hard to confirm without parsing JSON & making comparison.
 Could be as simple as comparison of number of displayed bikes vs number of elements in JSON array.
