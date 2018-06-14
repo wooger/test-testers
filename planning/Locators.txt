@@ -7,3 +7,8 @@ Bike names: class: 'panel-heading'
 Bike class: class: panel-footer -> class: 'capitalise' - repeated...
 Bike description: class: 'desc'
 Bike image: class: 'img-responsive'
+Checkboxes: div contains text "filter:{ key: attr }"
+then inside that:
+  * input tag with type: checkbox 
+  * Check state: checked="checked"
+  * Which class is being filtered: span tag, text attr
