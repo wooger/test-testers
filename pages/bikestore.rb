@@ -3,8 +3,8 @@
 class Bikestore 
 
     # page variables
-    BIKESTORE_URL = {"http://localhost:8000/"}
-    JSON_URL = {"http://localhost:8000/bikes.json"}
+    BIKESTORE_URL = "http://localhost:8000/"
+    JSON_URL = "http://localhost:8000/bikes.json"
     PRODLIST_LOCATOR = {class: 'prodList'}
     IMAGES_LOCATOR = {class: 'img-responsive'}
     DESC_LOCATOR = {class: 'desc'}
@@ -30,10 +30,10 @@ class Bikestore
         prodlist = @driver.find_element(class: 'prodList')
 
         # Collect array of elements for all Bikes
-        bike_names = prodlist.find_elements(class: 'panel-heading') 
+        @bike_names = prodlist.find_elements(class: 'panel-heading') 
 
         # Use text method on array to get text names
-        bike_names.map!(&:text)
+        @bike_names.map!(&:text)
 
         # Now repeat for images, descriptions & classes
         # Descriptions
@@ -67,21 +67,21 @@ class Bikestore
     def parse_json_file
 
         # Use open-uri & JSON to parse bikes.json directly
-        bikes_json = JSON.parse(open(JSON_URL).read)
+        @bikes_json = JSON.parse(open(JSON_URL).read)
 
         # Munge into suitable arrays for easy comparison with page data. 
         # Assign blank arrays with suitable names
-        names_json = []
-        class_json = []
-        desc_json = []
-        image_json = []
+        @names_json = []
+        @class_json = []
+        @desc_json = []
+        @image_json = []
 
         # Iterate through each bike's data
-        bikes_json['items'].each do |bike|
-            names_json << bike['name'] # names
-            class_json << bike['class'] # array of classes
-            desc_json << bike['description'] # descriptions
-            image_json << bike['image']['thumb'] # image
+        @bikes_json['items'].each do |bike|
+            @names_json << bike['name'] # names
+            @class_json << bike['class'] # array of classes
+            @desc_json << bike['description'] # descriptions
+            @image_json << bike['image']['thumb'] # image
         end
     end
 
@@ -89,8 +89,8 @@ class Bikestore
         
     def bike_totals_match?
         # Simple - compare number of bikes
-        bikes_total = bike_names.length # Total bike elements on page
-        bikes_json_total = bikes_json['items'].length # Total bike elements in JSON
+        bikes_total = @bike_names.length # Total bike elements on page
+        bikes_json_total = @bikes_json['items'].length # Total bike elements in JSON
         bikes_total == bikes_json_total
     end
 
@@ -99,7 +99,8 @@ class Bikestore
 
     def bike_names_match?
         # Confirm bikes from JSON are all present by comparing arrays
-        expect(bike_names).to eq(names_json)
+        @bike_names == @names_json
+        #expect(bike_names).to eq(names_json)
     end
 
     def bike_desc_present?

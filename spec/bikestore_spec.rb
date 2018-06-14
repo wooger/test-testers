@@ -8,20 +8,23 @@ describe 'Bikestore app' do
         @bikestore = Bikestore.new(@driver)
     end
 
-
     it 'product list exists' do
-        # Open bike store page
-        @driver.get 'http://localhost:8000/'
-        # Confirm div for Product List is present
-        expect {@driver.find_element(class: 'prodList') }.not_to raise_error
-        
+        expect {@bikestore.productlist_exists?}.not_to raise_error
     end
 
-    it 'page matches json file' do 
+    it 'number of bikes match' do 
+        @bikestore.parse_bikestore_page
+        @bikestore.parse_json_file
         expect(@bikestore.bike_totals_match?).to be true
     end
 
-    it 'all bikes have classes' do
+    it 'names match json ' do
+        @bikestore.parse_bikestore_page
+        @bikestore.parse_json_file
+        expect(@bikestore.bike_names_match?).to be true
+    end
+
+    it 'all bikes have class, name, image, description' do
     end
     
     it 'filters work' do
