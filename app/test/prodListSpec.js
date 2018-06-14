@@ -3,6 +3,7 @@ describe('prodList Controller', function () {
     var $httpBackend, $rootScope, createController;
 
     // Mock product data JSON for unit tests
+    // wooger / Oliver modified bike with id: 2 to add gravel as an additional class.
     var mockBikeJSON = {
         "items": [
             {
@@ -12,7 +13,7 @@ describe('prodList Controller', function () {
             },
             {
                 "id": 2,
-                "class": ["endurance", "race"],
+                "class": ["gravel", "endurance", "race"],
                 "gears": ["21"]
             },
             {
@@ -26,6 +27,8 @@ describe('prodList Controller', function () {
     var mockFiltersClassComfort = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true}];
     var mockFiltersClassComfort18GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":false},{"key":"gears","value":"18","state":true}];
     var mockFiltersClassComfort21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"comfort","state":true},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
+    // Declare new data filter variable to accomplish BDD bonus exercise
+    var mockFiltersClassGravel21GearsTrue = [{"key":"class","value":"endurance","state":false},{"key":"class","value":"race","state":false},{"key":"class","value":"gravel","state":true},{"key":"class","value":"comfort","state":false},{"key":"gears","value":"21","state":true},{"key":"gears","value":"18","state":false}];
 
     beforeEach(module('bikeStore'));
 
@@ -85,7 +88,9 @@ describe('prodList Controller', function () {
         var dataFilters = $rootScope.getDataFilters(mockBikeJSON.items, ["class", "gears"]);
 
         expect(dataFilters).not.toBeUndefined();
-        expect(dataFilters.length).toEqual(5);
+
+        // Modified from 5 to 6 to accomodate my new data filter variable
+        expect(dataFilters.length).toEqual(6);
 
     });
 
@@ -139,6 +144,21 @@ describe('prodList Controller', function () {
         var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassComfort)
 
         // we are execting no results
+        expect(filteredProducts.length).toEqual(1);
+		
+	});
+
+    // Wooger / Oliver created this test to fulfil the bonus exercise BDD criteria
+    it('when we filter by "class: gravel" and "gears: 21" we get one result', function () {
+
+		var controller = createController();
+		$httpBackend.flush();
+
+        // call filtered products with mock data
+        // wooger / oliver modified this line to include new 
+        var filteredProducts = $rootScope.filterProducts(mockBikeJSON.items, mockFiltersClassGravel21GearsTrue )
+
+        // we are execting one result
         expect(filteredProducts.length).toEqual(1);
 		
 	});
