@@ -1,2 +1,8 @@
 Bonus Exercise:
+Looks easy.
 
+1. Modify mock data to add a new class "gravel" to one of the bikes.
+2. Copy the test definition from another test and modify expected count, description & variable data filter name.
+3. Create a new data filter variable, and modify to filter the new gravel class.
+4. Finally, modify the sanity check test (Number of data filters is right) to include the new test.
+5. Reload http://localhost:8000/test and check the result = success
