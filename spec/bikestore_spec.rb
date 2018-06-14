@@ -12,19 +12,31 @@ describe 'Bikestore app' do
         expect {@bikestore.productlist_exists?}.not_to raise_error
     end
 
+    it 'all bikes have class, name, image, description' do
+        expect(@bikestore.bike_names_present?).to be true
+        expect(@bikestore.bike_desc_present?).to be true
+        expect(@bikestore.bike_images_present?).to be true
+        expect(@bikestore.bike_classes_present?).to be true
+    end
+    
     it 'number of bikes match' do 
-        @bikestore.parse_bikestore_page
-        @bikestore.parse_json_file
         expect(@bikestore.bike_totals_match?).to be true
     end
 
     it 'names match json ' do
-        @bikestore.parse_bikestore_page
-        @bikestore.parse_json_file
         expect(@bikestore.bike_names_match?).to be true
     end
 
-    it 'all bikes have class, name, image, description' do
+    it 'desc match json ' do
+        expect(@bikestore.bike_desc_match?).to be true
+    end
+    
+    it 'images match json ' do
+        expect(@bikestore.bike_images_match?).to be true
+    end
+    
+    it 'classes match json ' do
+        expect(@bikestore.bike_classes_match?).to be true
     end
     
     it 'filters work' do

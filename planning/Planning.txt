@@ -19,11 +19,11 @@ To test this: Locate element locators for each requirement, cycle through the re
 
 Story 3
     I would like to be able to sort the bikes into a custom order based on class
-To test this: Confirm that each filter checkbox works - i.e. that all bikes displayed have classes containing the selected filter. Use class element locator found in above test.
+To test this: Confirm that each filter checkbox works - i.e. that all bikes displayed have classes containing the selected filter. Use class element locator found in above test. See note below re sorting vs. filtering.
 
 Story 4
     I would like my custom order to be saved and not change when I refresh the page
-To test this: Load the page, check a filter box, refresh the page, and confirm the checkbox is still checked. Repeat for all other filters.    
+To test this: Load the page, check a filter box, refresh the page, and confirm the checkbox is still checked. Repeat for all other filters. See note below re sorting vs. filtering.
 
 Initial Thoughts:
 #1
@@ -31,7 +31,7 @@ If treated as a whitebox test, I could pull in the whole JSON data object &  com
 
 I don't think this is what we're after, a blackbox test is more appropriate.
 
-Decision: Other than examining the JSON manually, I'll treat this exercise as a blackbox test, and run tests only on the app page itself.
+Decision NOW REVERSED: Other than examining the JSON manually, I'll treat this exercise as a blackbox test, and run tests only on the app page itself.
 Update: The open-uri gem is the best route to parse & validate the JSON.
 I've decided it is worthwhile accessing the JSON directly & comparing to the page contents.
 
