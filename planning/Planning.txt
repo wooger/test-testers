@@ -58,3 +58,5 @@ Scope:
 Chrome Desktop Browser only to be tested.
 Average Screensize.
 Check only "all ticked" & "none ticked" filter states are retained, not every combination.
+Likewise, check only each class filter checkbox on it's own, rather than every combination.
+As app is locally hosted, timing & latency issues are minimal, so I'll knowingly ignore adding waits for now.

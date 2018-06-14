@@ -28,16 +28,17 @@ describe 'Bikestore app' do
     end
     
     it 'filters work' do
+        expect(@bikestore.filters_working?).to be true
     end
 
     it 'Filters stay off' do
-        state = [0, 0, 0 ]
-        filters_state_retained?(state)
+        state = [0, 0, 0]
+        expect(@bikestore.filters_state_retained?(state)).to be true
     end
 
     it 'Filters stay on' do
         state = [1, 1, 1 ]
-        expect(filters_state_retained?(state)).to
+        expect(@bikestore.filters_state_retained?(state)).to be true
     end
 
 end
