@@ -30,8 +30,14 @@ describe 'Bikestore app' do
     it 'filters work' do
     end
 
-    it 'filter state retained' do
+    it 'Filters stay off' do
+        state = [0, 0, 0 ]
+        filters_state_retained?(state)
     end
 
+    it 'Filters stay on' do
+        state = [1, 1, 1 ]
+        expect(filters_state_retained?(state)).to
+    end
 
 end

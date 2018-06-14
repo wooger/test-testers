@@ -57,3 +57,4 @@ I will write my testing assuming the story should instead read:
 Scope:
 Chrome Desktop Browser only to be tested.
 Average Screensize.
+Check only "all ticked" & "none ticked" filter states are retained, not every combination.
