@@ -1,0 +1,9 @@
+HOWTO Run Tests with Rspec:
+
+1. Install Ruby
+2. Install ruby gems via: gem install open-uri selenium-webdriver json rspec
+3. Download Chromedriver, unzip & place on the PATH
+4. Install Chrome browser
+5. Run bikestore app via one of the methods in readme.md
+6. Set URL variables at top of /pages/bikestore.rb to match the host you're using, if not localhost:8000
+7. Run tests via command "rspec bikestore_spec.rb" from the /spec directory.
