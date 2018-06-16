@@ -1,93 +1,119 @@
-# Bikes Tester Exercise
+# Planning Exercise
 
-![on my mf bike](app/favicon.png)
+![on my mf bike](/app/favicon.png)
+## User Story Analysis:
 
-## Your Challenge
+Check the exercise brief in the original [README.md](README_ORIGINAL.md) file for reference.
 
-We need you to create an integration test suite to test that the application herein functions correctly and renders according to the user stories.
+### Story 0
+*As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page.*
 
-### Steps
+Affects scope limitations only.
 
-1. Fork this project
-2. Make some reasonable assumptions and document
-3. Write your integration test suite (as much as you see fit)
-4. Document profusely
-5. *OPTIONAL Bonus Points* If you have time, attempt to get some bonus points (see below for bonus assessment criteria)
+### Story 1
+*I would like to see a list/grid of bikes based on /app/bikes.json*
 
-To submit your assessment please send us your GitHub repository URL. You will get bonus points if you send it to us before you've actually finished and work on it iteratively (like real life), your thought processes are of greater interest to us.
+To test this: 
+* Part A - is a grid/list shown? Check  class = prodList is present in relevant div.
+* Part B - is it based on bikes.json?
 
-**Good Luck!**
+Hard to confirm without parsing JSON & making comparison.
+Could be as simple as comparison of number of displayed bikes vs number of elements in JSON array.
 
-## The Scenario
+OR 
 
-One of our dev team has developed this wonderful Bikes application in [Angular.js](https://angularjs.org/) to meet our customer's requirements.
-It reads a blob of [json data](app/bikes.json) and renders a listing of all the bikes according to the following user story:
+Parse JSON directly, validate it & compare to displayed bikes in grid, confirming each named bike is present & alongside appropriate image, class, description etc.
 
-### The User story
+### Story 2
+*I would like to see a the name, an image, a description and the class for each bike.*
 
-As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page
+To test this: Locate element locators for each requirement, cycle through the repeating classes to confirm for each bike displayed.
 
-- I would like to see a list/grid of bikes based on `/app/bikes.json`
-- I would like to see a the name, an image, a description and the class for each bike
-- I would like to be able to sort the bikes into a custom order based on class
-- I would like my custom order to be saved and not change when I refresh the page
-- A JSON object with all the relevant bike data is available at https://jujhar.com/bikes.json; feel free to call that URL directly from your page or host it on your server if you're using one.
+### Story 3
+*I would like to be able to sort the bikes into a custom order based on class.*
 
-In addition the developer has also created some BDD based unit tests using [Jasmine](https://jasmine.github.io/) which can be found in `app/test`
-See [getting-the-application-running](https://github.com/jujhars13/test-testers#getting-the-application-running-locally) section to see how to run the test suite.
+To test this: Confirm that each filter checkbox works - i.e. that all bikes displayed have classes containing the selected filter. Use class element locator found in above test. See note below re sorting vs. filtering.
 
-## Assessment Criteria
+### Story 4
+*I would like my custom order to be saved and not change when I refresh the page.*
 
-Your test suite will be assessed on the following criteria with scoring in order of importance:
+To test this: Load the page, check a filter box, refresh the page, and confirm the checkbox is still checked. Repeat for all other filters. See note below re sorting vs. filtering.
 
-1. approach and style
-2. code organisation, commenting and documentation
-3. use of git
-4. how easily the test suite can be easily reproduced and ran on any machine
+## Initial thoughts on how to complete the task
 
-Again, we care more about criteria 1 and 2 as opposed to 3 and 4, so make sure you devote your time accordingly.
+* If treated as a whitebox test, I could pull in the whole JSON data object &  compare to page for accuracy - i.e. every bike has the correct images & data shown against it.
 
-### Bonus Points
+    * I don't think this is what we're after, a blackbox test is more appropriate.
 
-To qualify for extra bonus points please also attempt the following if you have time:
+    * **UPDATE** Decision NOW REVERSED: Other than examining the JSON manually, I'll treat this exercise as a blackbox test, and run tests only on the app page itself.
+    * **UPDATE**: The open-uri gem is the best route to parse & validate the JSON. I've decided it is worthwhile accessing the JSON directly & comparing to the page contents.
 
-1. Sharing your GitHub repo with us early and working on this task iteratively
-2. Modify the existing unit test suite + mock data in `app/test/` to satisfy the following BDD criteria:
-    - `when we filter by "class: gravel" and "gears: 21" we get one result`
+* Use Ruby, Rspec & Selenium WebDriver to accomplish the task.
 
-## Assumptions
+## Assumptions:
+* Assume the JSON is valididated already when generated, so don't directly parse the json file.
+* Assume that grid & list behave substantially the same, so no need to test both.
+* Update: Assume that all filter checkboxes are unticked for a new site visitor.
+* Update: Assume that the sort order of bikes on the pages matches that in the JSON. I note that the id parameters from the JSON aren't present on the page, so alpha-numeric sorting via bike name is the only other option.
+* Only test on Chrome on Desktop rather than mobile.
+* Assume a reasonable screen size such that the desktop 3xN grid is shown. 
+* Assume that the specific image & description shown for each bike matters - rather than just *an* image being shown etc.
 
-- Please list any assumptions or scope limitations that you may make
-- Organise your test suite and directory structure as you see fit
-- Feel free to use any languages and libraries/frameworks
+## User Story Error - filter vs. sort
+The page obviously doesn't *sort* bikes based on the class checkboxes, but rather filters based on them. I'm going to assume that the wording of the user story here is an oversight, and you don't want me to re-write the app / make a test for something that isn't included.
 
-## Getting the Application Running locally
-This is a single page static web application and can be ran in a myriad of ways:
+I will write my testing assuming the story should instead read:
+- *I would like to be able to FILTER the bikes shown based on class.*
+- *I would like my FILTER to be saved and not change when I refresh the page.*
 
-### Docker
+## Scope:
+- Chrome Desktop Browser only to be tested.
+- Average Screensize assumed - i.e. scrolling irrelevant, desktop layout will be used.
+- Check only "all ticked" & "none ticked" filter states are retained, not every combination.
+- Likewise, check only each class filter checkbox on it's own, rather than every combination.
+- As app is locally hosted, timing & latency issues are minimal, so I'll knowingly ignore adding waits for now.
 
-This application can be run simply using [Docker](https://www.docker.com/).
+## Locators for exercise:
 
-```bash
+* **Product List:** class: 'prodList'
+* **Bike names:** class: 'panel-heading' 
+ * **Bike class:** class: panel-footer -> class: 'capitalise' - repeated...
+* **Bike description:** class: 'desc'
+* **Bike image:** class: 'img-responsive'
+* **Checkboxes:** div contains text "filter:{ key: attr }"
+then inside that:
+    * input tag with type: checkbox 
+    * Check state: checked="checked"
+    * Which class is being filtered: span tag, text attr 
 
-docker run -it -v ${PWD}/app:/usr/share/nginx/html:ro -p 80:80 nginx:1.13
+## How to run tests with Rspec:
+
+1. Install Ruby
+2. Install required ruby gems via: 
+```shell
+> bundle install 
 ```
-
-Then browse to [http://localhost]() to see the application running.
-You can also run the [Jasmine](https://jasmine.github.io/) based unit test suite by browsing to [http://localhost/test]() 
-
-### Python
-
-```bash
-cd app
-python -m SimpleHTTPServer
+or, if you have bundler installed
+```shell
+> gem install selenium-webdriver json rspec
 ```
+3. Download Chromedriver, unzip & place on the PATH
+4. Install Chrome browser
+5. Run bikestore app via one of the methods in the supplied README.md
+6. Set URL variables at top of /pages/bikestore.rb to match the host you're using, if not http://localhost:8000
+7. Run tests via command 
+```shell
+> rspec bikestore_spec.rb
+``` 
+from the /spec directory.
 
-### Local Webserver
+## Bonus Exercise:
+Looks easy.
 
-It can also be run by simply serving the `app/` directory from any web server on your machine if you're not so familiar with containers.
-
-## Screenshot
-
-Screenshot of application running locally
-![bikes application screenshot](https://raw.githubusercontent.com/jujhars13/test-testers/master/screenshot.png)
+1. Modify mock data to add a new class "gravel" to one of the bikes.
+2. Copy the test definition from another test and modify expected count, description & variable data filter name.
+3. Create a new data filter variable, and modify to filter the new gravel class.
+4. Finally, modify the sanity check test (Number of data filters is right) to include the new test.
+5. Reload http://localhost:8000/test and check the result = success
+### Screenshot of Success
+![screenshot](/bonus_screenshot.png)
