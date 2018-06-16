@@ -7,6 +7,6 @@ Todo:
 6. Code in test details & decide on expectations. DONE
 7. Test specfiles via rspec <filename>. DONE
 8. Split code into spec helper, pages & specs. DONE
-9. Convert text files into markdown.
-10. Tackle bonus task.
+9. Convert text files into markdown. DONE
+10. Tackle bonus task. DONE
 11. Consider renaming test descriptions & adding contexts for clarity
