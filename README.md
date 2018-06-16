@@ -8,7 +8,7 @@ Check the exercise brief in the original [README.md](README_ORIGINAL.md) file fo
 ### Story 0
 *As a user, assuming I have access to a modern web browser (Chrome) with an internet connection and I am visiting the page.*
 
-Affects scope limitations only.
+This affects scope limitations only, see scope section below.
 
 ### Story 1
 *I would like to see a list/grid of bikes based on /app/bikes.json*
